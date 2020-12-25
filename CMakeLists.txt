@@ -39,7 +39,7 @@ if(${ESTL_NORMAL})
 		)
 	set (gsl_include_dir "${gsl_SOURCE_DIR}/include")
 
-	set(source_files all.hpp operators.hpp)
+	set(source_files construct.hpp)
 	list(TRANSFORM source_files PREPEND "include/ape/utility/" )
 
 	add_library(ape_utility INTERFACE)
@@ -52,9 +52,9 @@ if(${ESTL_NORMAL})
 		_SILENCE_CXX17_UNCAUGHT_EXCEPTION_DEPRECATION_WARNING
 		>)
 	target_include_directories(ape_utility INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>)
-	target_sources(ape_utility INTERFACE ${source_files})
+	#target_sources(ape_utility INTERFACE ${source_files})
 
-	amun_fake_project(ape_utility 
+	amun_fake_project(ape_utility_ 
 		SOURCES ${source_files} src/dummy.cpp
 		INCLUDES include  ${gsl_include_dir} ${ape_config_include_dir}
 		FOLDER Libs)
